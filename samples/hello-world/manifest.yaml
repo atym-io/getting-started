@@ -1,0 +1,16 @@
+# Copyright (C) 2022 Nubix Incorporated.  All rights reserved.
+# Nubix Container Appplication File
+
+version: '3'
+
+services:
+
+  hello-word_service:
+    image: hello-world:latest 
+    resource:
+      heapSize: 4096
+    environment:
+      - ENV="NULL"
+      
+    
+

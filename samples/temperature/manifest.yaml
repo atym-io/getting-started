@@ -1,0 +1,28 @@
+# Copyright (C) 2022 Nubix Incorporated.  All rights reserved.
+# Nubix Container Appplication File
+
+version: '3'
+
+services:
+
+  temp_sensor:
+    image: sensor_service:latest 
+    resource:
+      heapSize: 4096
+    environment:
+      - sensorPollingInterval=1000
+
+  temp_analytics:
+    image: analytics_service:latest
+    resource:
+      heapSize: 4096
+    environment:
+      - units=F
+      - lowerThreshold=95.0
+      - upperThreshold=100.0
+      - intervals=60
+
+  temp_mqtt:
+    image: mqtt_service:latest 
+    resource:
+      heapSize: 6144
