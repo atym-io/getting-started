@@ -5,13 +5,10 @@ project(APPNAME)
 
 
 add_compile_options(-O3 -Wno-unknown-attributes)
-string(APPEND CMAKE_C_FLAGS " -nostdlib")
+#string(APPEND CMAKE_C_FLAGS " -nostdlib")
 add_link_options(
-    -z stack-size=8192
     -Wl,--allow-undefined
     -Wl,--strip-all,--no-entry
-    -Wl,--export=__heap_base
-    -Wl,--export=__data_end
     -Wl,--export-all)
 
 include_directories(/opt/wamr-sdk/app-sdk/wamr-app-framework/include)

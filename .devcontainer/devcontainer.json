@@ -5,7 +5,7 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 		// Update 'VERSION' to pick an WASM toolchain version
-		"args": { "VERSION": "14.0" }
+		"args": { "VERSION": "20.0" }
 	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -19,5 +19,17 @@
 	"features": {
 		"ghcr.io/devcontainers/features/git:1": {},
 		"ghcr.io/devcontainers/features/github-cli:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-vscode.cpptools-extension-pack",
+				"ms-vscode.cpptools-themes",
+				"ms-vscode.cpptools",
+				"twxs.cmake",
+				"ms-vscode.cmake-tools"
+			]
+		}
 	}
 }
+  
