@@ -4,7 +4,20 @@
 
 #include <stdio.h>
 
-#include "bi-inc/nubix_api.h"
+// #include "bi-inc/nubix_api.h"
 
 // Nubix container entrypoint
-void nubix_init() { printf("Hello World from a Nubix Container!\n"); }
+void on_init()
+{
+   printf("**** on_init() called ****\n\n");
+   printf("\
+        ██     ██ ███████ ██████   █████  ███████ ███████ ███████ ███    ███ ██████  ██   ██    ██ \n\
+        ██     ██ ██      ██   ██ ██   ██ ██      ██      ██      ████  ████ ██   ██ ██    ██  ██  \n\
+        ██  █  ██ █████   ██████  ███████ ███████ ███████ █████   ██ ████ ██ ██████  ██     ████   \n\
+        ██ ███ ██ ██      ██   ██ ██   ██      ██      ██ ██      ██  ██  ██ ██   ██ ██      ██    \n\
+         ███ ███  ███████ ██████  ██   ██ ███████ ███████ ███████ ██      ██ ██████  ███████ ██    \n\
+                                                                                                   \n\
+                                                                                 powered by Atym   \n");
+
+   printf("\n\n Update v4\n");
+}
