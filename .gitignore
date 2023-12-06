@@ -36,9 +36,9 @@
 *.x86_64
 *.hex
 
-# Nubix and WASM
+# Atym and WASM
 *.wasm
-*.nbx
+*.ati
 *.aot
 
 # Debug files

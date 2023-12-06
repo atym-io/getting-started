@@ -1,17 +1,17 @@
-Getting Started with Nubix
+Getting Started with Atym
 ==========================
-This repository contains materials and sample code for building applications with the Nubix Platform.
+This repository contains materials and sample code for building applications with the Atym Platform.
 
 
 ## Prerequisites 
-The Nubix toolchain for C/C++ is provided as a Docker container image.  This requires the Docker Desktop or similar to be installed on your development machine.  This can be run interactively or as a Dev Container which can be used with Visual Studio Code.  For use with Visual Studio Code, the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension is required.  The dev container can also be run directly in GitHub via [CodeSpaces](https://docs.github.com/en/codespaces).
+The Atym toolchain for C/C++ is provided as a Docker container image.  This requires the Docker Desktop or similar to be installed on your development machine.  This can be run interactively or as a Dev Container which can be used with Visual Studio Code.  For use with Visual Studio Code, the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension is required.  The dev container can also be run directly in GitHub via [CodeSpaces](https://docs.github.com/en/codespaces).
 
 ## Development with Visual Studio Code
-A Development container, or dev continer, is a Docker containers specifically configured to provide a complete development environment.  When working with a dev container, the VS Code editor runs locally on your development machine and the Nubix toolchain runs withing the container.  
+A Development container, or dev continer, is a Docker containers specifically configured to provide a complete development environment.  When working with a dev container, the VS Code editor runs locally on your development machine and the Atym toolchain runs withing the container.  
 
 To develop with a dev container follow these steps:
 1. Install all of the prerequisites as specified above
-2. Close the [`nubix-io/getting-started`](https://github.com/nubix-io/getting-started) repository locally
+2. Clone the [`atym-io/getting-started`](https://github.com/atym-io/getting-started) repository locally
 3. Start VS Code
 4. Run the `Dev Containers: Open Folder in Container...` command and select the local folder.
 
@@ -31,7 +31,7 @@ Additional documentation and a step-by-step guide for working with dev container
 The toolchain container can be launch and used interactively as follows:
 ```
 cd samples
-docker run --rm -it -v $(pwd):/home/nubix nubix/nubix-c-toolchain:latest
+docker run --rm -it -v $(pwd):/home/atym atym/atym-c-toolchain:latest
 ```
 
 Each of the sample applications has a CMake file and can be built as follows:
