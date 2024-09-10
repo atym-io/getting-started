@@ -19,7 +19,7 @@ The VS Code window will then reload, but since the container does not exist yet,
 
 Opening a terminal will give you console access to the container environment.  From there, the samples can be built.  Each of the sample applications has a CMake file and can be built as follows:
 ```
-cd samples/hello-work
+cd samples/hello-world
 mkdir build && cd build
 cmake -DWASI_SDK_DIR=/opt/wasi-sdk -DCMAKE_TOOLCHAIN_FILE=/opt/wamr-sdk/app-sdk/wamr_toolchain.cmake ..
 make
@@ -36,7 +36,7 @@ docker run --rm -it -v $(pwd):/home/atym atym/atym-c-toolchain:latest
 
 Each of the sample applications has a CMake file and can be built as follows:
 ```
-cd hello-work
+cd hello-world
 mkdir build && cd build
 cmake -DWASI_SDK_DIR=/opt/wasi-sdk -DCMAKE_TOOLCHAIN_FILE=/opt/wamr-sdk/app-sdk/wamr_toolchain.cmake ..
 make
