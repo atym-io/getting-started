@@ -1,9 +1,0 @@
-{
-    "makefile.extensionOutputFolder": "./.vscode",
-
-    // Hush CMake
-    "cmake.configureOnOpen": false,
-
-    "cmake.sourceDirectory": "/workspaces/getting-started/samples/blinky",
-    "editor.fontFamily": "Consolas, 'Courier New', monospace"
-}
