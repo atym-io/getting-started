@@ -31,7 +31,7 @@ Additional documentation and a step-by-step guide for working with dev container
 The toolchain container can be launch and used interactively as follows:
 ```
 cd samples
-docker run --rm -it -v $(pwd):/home/atym atym/atym-c-toolchain:latest
+docker run --rm -it -v $(pwd):/home/atym ghcr.io/atym-io/atym-c-toolchain:latest
 ```
 
 Each of the sample applications has a CMake file and can be built as follows:
