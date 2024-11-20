@@ -4,8 +4,8 @@
 	"name": "Atym WASM Toolchain",
 	"build": {
 		"dockerfile": "Dockerfile",
-		// Update 'VERSION' to pick an WASM toolchain version
-		"args": { "VERSION": "20.0" }
+		// Update 'VERSION' to pick a WASM toolchain version
+		"args": { "VERSION": "24.0" }
 	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
