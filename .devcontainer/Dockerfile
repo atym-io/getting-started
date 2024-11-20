@@ -1,4 +1,5 @@
-# [Parameters] 
-# Select the version of the WASM toolchain
-ARG VERSION="20.0"
-FROM ghcr.io/atym-io/atym-c-toolchain:latest
+# [Parameters]
+
+# 'VERSION' is passed through the `devcontainer.json` file. Change version there
+ARG VERSION
+FROM ghcr.io/atym-io/atym-c-toolchain:${VERSION}
