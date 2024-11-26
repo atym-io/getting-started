@@ -5,11 +5,10 @@ version: '1'
 
 name: HelloWorld
 binaries:
-  - path: hello-world.wasm
+  - path: build/hello-world.wasm
 
 config:
   environment:
     - Message
   permissions:
     - console
-
