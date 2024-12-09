@@ -8,7 +8,7 @@ This repository contains materials and sample code for building applications wit
 
 ## Prerequisites
 
-Please install all of the following prerequisites if you intend to use the dev contianer within VS Code. Alternatively, if you're only planning on running the dev container locally you only need to install **Docker Desktop**.
+Please install all of the following prerequisites if you intend to use the dev container within VS Code. Alternatively, if you're only planning on running the dev container locally you only need to install **Docker Desktop**.
 
 * [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 * [Visual Studio Code](https://code.visualstudio.com/)
@@ -20,7 +20,7 @@ Please install all of the following prerequisites if you intend to use the dev c
 
 To develop with the Atym dev container using VS Code follow these steps:
 
-1. Install all of the mentioned pre-requesites
+1. Install all of the mentioned pre-requisites
 2. Clone the [`atym-io/getting-started`](https://github.com/atym-io/getting-started) repository locally
 3. Start VS Code
 4. Run the `Dev Containers: Open Folder in Container...` from the Command Palette (`Cmd + Shift + P` for Mac, or `Ctrl + Shift + P` for Windows).
@@ -63,14 +63,14 @@ Then build the container using the Atym CLI (provided in the Dev Container)
 atym build
 ```
 
-You should now see a new `.atym` directory in your home directory (`~/.atym`) that contains the containers name (as specified in `build.yml`), as well as all of the container contents.
+You should now see a new `.atym` directory in your home directory (`~/.atym`) that contains the container name (as specified in `build.yml`), as well as all of the container contents.
 
 ## What's Next?
 Now that you've built your first Atym container, it's time to deploy it to your device! 
 Visit our [Quickstart Guide](https://docs.atym.io/quickstart) to learn how to set up the Atym Runtime on your board, register your device with the Atym Hub, and deploy your first containerized application. 
 
 ## Important links
-Explore these sections in our docs to get more framiliar with developing Atym containers.
+Explore these sections in our docs to get more familiar with developing Atym containers.
 
 - [Container Specification](https://docs.atym.io/architecture/containers/overview) - Understand the Atym container format
 - [Container APIs](https://docs.atym.io/reference/api) - Discover available container APIs
