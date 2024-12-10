@@ -4,7 +4,9 @@
 	"name": "Atym WASM Toolchain",
 	"build": {
 		"dockerfile": "Dockerfile",
-		// Update 'VERSION' to pick a WASM toolchain version
+		// Update "VERSION" (or use 'latest`) to specify the desired atym-toolchain container tag
+		// which is tied to the included WASI_SDK version. See available tags below
+		// https://github.com/atym-io/atym-c-toolchain/pkgs/container/atym-c-toolchain/versions
 		"args": { "VERSION": "24.0" }
 	},
 
