@@ -1,12 +1,10 @@
 /*
- * Copyright (C) 2022 Nubix Incorporated.  All rights reserved.
+ * Copyright (C) 2024 Atym Incorporated. All rights reserved.
  */
 
 #include <stdio.h>
 
-// #include "bi-inc/nubix_api.h"
-
-// Nubix container entrypoint
+// Atym container entrypoint
 void on_init()
 {
    printf("**** on_init() called ****\n\n");

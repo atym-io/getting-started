@@ -4,7 +4,6 @@ set(APPNAME hello-world)
 project(APPNAME)
 
 add_compile_options(-O3 -Wno-unknown-attributes)
-#string(APPEND CMAKE_C_FLAGS " -nostdlib")
 add_link_options(
     -Wl,--allow-undefined
     -Wl,--strip-all,--no-entry
