@@ -3,20 +3,13 @@ set(APPNAME blinky)
 
 project(APPNAME)
 
-add_compile_options(-O3 -Wno-unknown-attributes)
-string(APPEND CMAKE_C_FLAGS " -nostdlib")
-add_link_options(
-    -z stack-size=8192
-    -Wl,--allow-undefined
-    -Wl,--strip-all,--no-entry
-    -Wl,--export=__heap_base
-    -Wl,--export=__data_end
-    -Wl,--export-all)
+add_compile_options(-O0 -Wno-unknown-attributes)
 
-include_directories(/opt/wamr-sdk/app-sdk/wamr-app-framework/include)
-find_library(LIBAPP_FRAMEWORK
-    NAMES app_framework libappframework
-    HINTS /opt/wamr-sdk/app-sdk/wamr-app-framework/lib)
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--allow-undefined")
+
+add_link_options(
+    -Wl,--strip-all # Strip all symbol/debug information from the binary
+)
 
 add_executable(${APPNAME}.wasm main.c)
 
