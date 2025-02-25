@@ -1,13 +1,11 @@
 /*
- * Copyright (C) 2024 Atym Incorporated. All rights reserved.
+ * Copyright (C) 2025 Atym Incorporated. All rights reserved.
  */
 
 #include <stdio.h>
 
-// Atym container entrypoint
-void on_init()
+int main() 
 {
-   printf("**** on_init() called ****\n\n");
    printf("\
         ██     ██ ███████ ██████   █████  ███████ ███████ ███████ ███    ███ ██████  ██   ██    ██ \n\
         ██     ██ ██      ██   ██ ██   ██ ██      ██      ██      ████  ████ ██   ██ ██    ██  ██  \n\
@@ -16,6 +14,5 @@ void on_init()
          ███ ███  ███████ ██████  ██   ██ ███████ ███████ ███████ ██      ██ ██████  ███████ ██    \n\
                                                                                                    \n\
                                                                                  powered by Atym   \n");
-
-   printf("\n\n Update v4\n");
+   printf("\n\n Update v5\n");
 }

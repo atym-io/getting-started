@@ -45,13 +45,13 @@ Each of the sample applications has a CMake file and can be built as follows:
 ```
 cd samples/sample_name
 mkdir build && cd build
-cmake -DWASI_SDK_DIR=/opt/wasi-sdk -DCMAKE_TOOLCHAIN_FILE=/opt/wamr-sdk/app-sdk/wamr_toolchain.cmake ..
+cmake ..
 make
 ```
 
 **Note:** This step results in the creation of a file named `sample_name.wasm`, which will be used by the Atym CLI to create an Atym container in the next step.
 
-Next, jump up out of the *build* directory and back to the project root.
+Next, jump up out of the *build* directory and back to the sample root.
 
 ```
 cd ..
@@ -60,7 +60,7 @@ cd ..
 Then build the container using the Atym CLI (provided in the Dev Container)
 
 ```
-atym build
+atym build -v
 ```
 
 You should now see a new `.atym` directory in your home directory (`~/.atym`) that contains the container name (as specified in `build.yml`), as well as all of the container contents.
