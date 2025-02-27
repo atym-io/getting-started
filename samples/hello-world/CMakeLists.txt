@@ -1,19 +1,28 @@
-cmake_minimum_required (VERSION 3.20.0)
-set(APPNAME hello-world)   
+cmake_minimum_required(VERSION 3.20.0)
 
-project(APPNAME)
+# Set the WASI SDK toolchain file with pthread support
+set(CMAKE_TOOLCHAIN_FILE /opt/wasi-sdk/share/cmake/wasi-sdk-pthread.cmake)
 
-add_compile_options(-O3 -Wno-unknown-attributes)
-add_link_options(
-    -Wl,--allow-undefined
-    -Wl,--strip-all,--no-entry
-    -Wl,--export-all)
+# Verify toolchain file exists
+if(NOT EXISTS ${CMAKE_TOOLCHAIN_FILE})
+    message(FATAL_ERROR "WASI toolchain cmake not found at ${CMAKE_TOOLCHAIN_FILE}.")
+endif()
 
-include_directories(/opt/wamr-sdk/app-sdk/wamr-app-framework/include)
-find_library(LIBAPP_FRAMEWORK
-    NAMES app_framework libappframework
-    HINTS /opt/wamr-sdk/app-sdk/wamr-app-framework/lib)
+# Set the project name (needs to come after the toolchain file) 
+set(APPNAME hello-world)
+project(${APPNAME})
 
+# Set the linker flags 
+set(CMAKE_EXE_LINKER_FLAGS "-Wl,--strip-all -Wl,--no-entry -Wl,--allow-undefined")
+
+# Set compilation flags
+add_compile_options(
+    -O0 -Wno-unknown-attributes
+    -O3
+    -Wall
+    -Wextra
+    -Wno-unused-parameter
+)
+
+# Create the executable target
 add_executable(${APPNAME}.wasm main.c)
-
-target_link_libraries(${APPNAME}.wasm ${LIBAPP_FRAMEWORK})
