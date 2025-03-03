@@ -27,6 +27,10 @@ int main() {
     
     ocre_timer_create(timer_id);
     ocre_timer_start(timer_id, interval_ms, is_periodic);
-    
+   
+    // Sleep for 60s to prevent main from exiting
+    ocre_sleep(60000);
+   
+    printf("Blinky app exiting...\n");
     return 0;
 }
