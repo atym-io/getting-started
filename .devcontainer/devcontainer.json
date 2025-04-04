@@ -7,7 +7,12 @@
 		// Update "VERSION" (or use 'latest`) to specify the desired atym-toolchain container tag
 		// which is tied to the included WASI_SDK version. See available tags below
 		// https://github.com/atym-io/atym-c-toolchain/pkgs/container/atym-c-toolchain/versions
-		"args": { "VERSION": "24.0" }
+		"args": { 
+			"VERSION": "24.0",
+			"ZEPHYR_SDK_VERSION": "0.16.8",
+			"USERNAME": "vscode",
+			"HOSTTYPE": "x86_64"
+		}
 	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
