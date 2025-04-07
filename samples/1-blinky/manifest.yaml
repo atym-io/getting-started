@@ -1,0 +1,13 @@
+# Copyright (C) 2024 Atym Incorporated. All rights reserved.
+# Atym Container Appplication File
+
+version: '3'
+
+services:
+
+  blinky_service:
+    image: blinky:latest 
+    resource:
+      heapSize: 4096
+    environment:
+      - ENV="NULL"

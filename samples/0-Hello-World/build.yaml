@@ -1,0 +1,14 @@
+# Copyright (C) 2024 Atym Incorporated. All rights reserved.
+# Atym container image definition
+
+version: '1'
+
+name: hello-world 
+binaries:
+  - path: build/hello-world.wasm
+
+config:
+  environment:
+    - Message
+  permissions:
+    - console

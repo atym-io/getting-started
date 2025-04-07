@@ -1,0 +1,15 @@
+# Copyright (C) 2024 Atym Incorporated. All rights reserved.
+# Atym container image definition
+
+version: '1'
+
+name: sensors
+binaries:
+  - path: build/sensors.wasm
+
+config:
+  environment:
+    - INTERVAL=500
+  permissions:
+    - console
+    - LED
