@@ -13,7 +13,7 @@ set(APPNAME hello-world)
 project(${APPNAME})
 
 # Set the linker flags 
-set(CMAKE_EXE_LINKER_FLAGS "-Wl,--strip-all -Wl, --allow-undefined")
+set(CMAKE_EXE_LINKER_FLAGS "-Wl,--strip-all -Wl,--allow-undefined")
 
 # Set compilation flags
 add_compile_options(
