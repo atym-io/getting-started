@@ -1,12 +1,7 @@
 cmake_minimum_required(VERSION 3.20.0)
 
-# Set the WASI SDK toolchain file with pthread support
-set(CMAKE_TOOLCHAIN_FILE /opt/wasi-sdk/share/cmake/wasi-sdk-pthread.cmake)
-
-# Verify toolchain file exists
-if(NOT EXISTS ${CMAKE_TOOLCHAIN_FILE})
-    message(FATAL_ERROR "WASI toolchain cmake not found at ${CMAKE_TOOLCHAIN_FILE}.")
-endif()
+# Set the WASI SDK toolchain file
+set(CMAKE_TOOLCHAIN_FILE /opt/wasi-sdk/share/cmake/wasi-sdk-p1.cmake)
 
 # Set the project name (needs to come after the toolchain file) 
 set(APPNAME hello-world)
