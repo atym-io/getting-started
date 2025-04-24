@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <locale.h>
 
+// Application entry point
 int main() 
 {
     // Set the locale to support Unicode characters
