@@ -9,27 +9,27 @@
 #define TIMER_ID        1
 #define TIMER_INTERVAL  500
 
-// Define LED port (both RED and GREEN LEDs are on port 7)
-#define LED_PORT 7
+// Define the GPIO pin, port, state, and direction for the LED
+typedef struct {
+    int pin;
+    int port;
+    char direction;
+    char state;
+} gpio_config_t;
 
-// Define LED config
-static const ocre_gpio_config_t led_config = {
-    // RED LED
-    .pin = 6,
-    // GREEN LED
-    // .pin = 7,
-    .direction = OCRE_GPIO_DIR_OUTPUT
+static const gpio_config_t led_config = {
+    .port = 7,
+    .pin = 7, // Red LED is on pin 6, Green LED is on pin 7
+    .direction = OCRE_GPIO_DIR_OUTPUT,
+    .state = OCRE_GPIO_PIN_SET,
 };
-
-// Track LED state (setting it to 1 initially, as LEDS are active low and we want to turn it off) 
-static ocre_gpio_pin_state_t led_state = OCRE_GPIO_PIN_SET;
 
 // Manages the LED state, and called by the timer callback function
 void blink_led(void) {
     static bool led_state = false;
-    ocre_gpio_pin_toggle(LED_PORT, led_config.pin);
     led_state = !led_state;
-    printf("%s\r", led_state ? "+" : ".");
+    ocre_gpio_pin_set(led_config.port, led_config.pin, led_state ? OCRE_GPIO_PIN_RESET : OCRE_GPIO_PIN_SET); // LEDS active low
+    printf("%s\n", led_state ? "+" : ".");
 }
 
 // Timer callback function exposed to Zephyr
@@ -53,18 +53,18 @@ int main(void) {
     }
 
     // Configure the LED pin
-    ret = ocre_gpio_configure(LED_PORT, led_config.pin, led_config.direction);
+    ret = ocre_gpio_configure(led_config.port, led_config.pin, led_config.direction);
     if (ret != 0) {
         printf("Failed to configure GPIO: port=%d, pin=%d, direction=%d ret=%d\n", 
-               LED_PORT, led_config.pin, led_config.direction, ret);
+               led_config.port, led_config.pin, led_config.direction, ret);
         return ret;
     }
 
     // Set initial PIN State
-    ret = ocre_gpio_pin_set(LED_PORT, led_config.pin, led_state);
+    ret = ocre_gpio_pin_set(led_config.port, led_config.pin, led_config.state);
     if (ret != 0) {
         printf("Failed to set GPIO pin state: port=%d, pin=%d, state=%d, ret=%d\n", 
-               LED_PORT, led_config.pin, led_state, ret);
+               led_config.port, led_config.pin, led_config.state, ret);
         return ret;
     }
 
