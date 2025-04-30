@@ -9,12 +9,12 @@
 #define TIMER_ID        1
 #define TIMER_INTERVAL  500
 
-// Define the GPIO pin, port, state, and direction for the LED
+// Define the GPIO port, pin, state, and direction for the LED
 typedef struct {
-    int pin;
     int port;
-    char direction;
-    char state;
+    int pin;
+    int direction;
+    int state;
 } gpio_config_t;
 
 static const gpio_config_t led_config = {
