@@ -2,11 +2,16 @@
 #define OCRE_API_H
 
 // --- GPIO API ---
-#define OCRE_GPIO_DIR_INPUT  0
-#define OCRE_GPIO_DIR_OUTPUT 1
 
-#define OCRE_GPIO_PIN_RESET  0
-#define OCRE_GPIO_PIN_SET    1
+typedef enum {
+    OCRE_GPIO_DIR_INPUT = 0,
+    OCRE_GPIO_DIR_OUTPUT = 1
+} ocre_gpio_direction_t;
+
+typedef enum {
+    OCRE_GPIO_PIN_RESET = 0,
+    OCRE_GPIO_PIN_SET = 1
+} ocre_gpio_pin_state_t;
 
 int ocre_gpio_init ();
 int ocre_gpio_configure(int port, int pin, int direction);

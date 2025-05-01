@@ -1,6 +1,8 @@
 /*
  * Copyright (C) 2025 Atym Incorporated. All rights reserved.
  */
+
+// This example demonstrates a simple blinky application using the Atym GPIO and timer APIs.
 #include <stdio.h>
 #include <stdbool.h>
 #include "ocre_api.h"
@@ -9,17 +11,19 @@
 #define TIMER_ID        1
 #define TIMER_INTERVAL  500
 
-// Define the GPIO port, pin, state, and direction for the LED
+// Define a common struct for configuring a GPIO pin 
 typedef struct {
     int port;
     int pin;
-    int direction;
-    int state;
+    ocre_gpio_direction_t direction;
+    ocre_gpio_pin_state_t state;
 } gpio_config_t;
 
+// Define the GPIO port, pin, state, and direction for the LED.
+// The LEDs are active LOW, so we use OCRE_GPIO_PIN_SET (logic HIGH) to turn it OFF initially.
 static const gpio_config_t led_config = {
     .port = 7,
-    .pin = 7, // Red LED is on pin 6, Green LED is on pin 7
+    .pin = 7, // Red LED (PH6) is on pin 6, Green LED (PH7) is on pin 7
     .direction = OCRE_GPIO_DIR_OUTPUT,
     .state = OCRE_GPIO_PIN_SET,
 };
@@ -28,7 +32,7 @@ static const gpio_config_t led_config = {
 void blink_led(void) {
     static bool led_state = false;
     led_state = !led_state;
-    ocre_gpio_pin_set(led_config.port, led_config.pin, led_state ? OCRE_GPIO_PIN_RESET : OCRE_GPIO_PIN_SET); // LEDS active low
+    ocre_gpio_pin_toggle(led_config.port, led_config.pin);
     printf("%s\n", led_state ? "+" : ".");
 }
 
