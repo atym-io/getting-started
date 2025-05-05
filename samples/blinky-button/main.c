@@ -65,8 +65,10 @@ int main() {
     printf("Dual-timer blink demo starting...\n");
 
     ocre_gpio_init();
+
     ocre_gpio_configure(PORT_LED_RED, PIN_LED_RED, OCRE_GPIO_DIR_OUTPUT);
     ocre_gpio_configure(PORT_LED_GREEN, PIN_LED_GREEN, OCRE_GPIO_DIR_OUTPUT);
+    
     ocre_gpio_configure(PORT_BTN, PIN_BTN, OCRE_GPIO_DIR_INPUT);
     ocre_gpio_register_callback(PORT_BTN, PIN_BTN);
 
@@ -81,8 +83,9 @@ int main() {
     while (true) {
         if (button_event) {
             button_event = false;
-
-            bool red_running = ocre_timer_get_remaining(TIMER_ID_RED) > 0;
+            
+            static bool red_running = true;
+            red_running = !red_running;
 
             if (red_running) {
                 ocre_timer_stop(TIMER_ID_RED);
