@@ -1,8 +1,6 @@
 Getting Started with Atym
 ==========================
-This repository contains materials and sample code for building applications with the Atym Platform, including the Atym toolchain for C/C++ via a **dev container**.
-[Dev containers](https://code.visualstudio.com/docs/remote/containers-tutorial) are essentially a Docker container image that is specifically configured to provide a complete development environment. When working with this dev container, it will run locally on your development machine (via VS Code) and the Atym toolchain runs within that container. 
-**Note:** The included dev container can also be run interactively, without the need for VSCode.
+This repository contains materials and sample code for building applications with the Atym Platform, including the Atym toolchain for C/C++ via a **[dev container](https://code.visualstudio.com/docs/remote/containers-tutorial)**, which can also be run in VSCode or interactively.
 
 ## Getting Started
 
@@ -15,17 +13,13 @@ Or if you already cloned without submodules:
 git submodule update --init --recursive
 ```
 
-## Prerequisites
-Please install all of the following prerequisites if you intend to use the dev container within VS Code. Alternatively, if you're only planning on running the dev container locally you only need to install **Docker Desktop**.
-* [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-* [Visual Studio Code](https://code.visualstudio.com/)
-* [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) Extension in VSCode
+**Why submodules?** This repository includes the [ATYM SDK](https://github.com/atym-io/atym-sdk) as a submodule, which provides the C API definitions (like GPIO, sensors, timers, and messaging) needed to build Atym applications. The `--recursive` flag ensures you get both this repository and the SDK headers.
 
 ---
 
 ### Development with Visual Studio Code
 To develop with the Atym dev container using VS Code follow these steps:
-1. Install all of the mentioned pre-requisites
+1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/), [Visual Studio Code](https://code.visualstudio.com/), and the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) Extension in VSCode.
 2. Start VS Code
 3. Run the `Dev Containers: Open Folder in Container...` from the Command Palette (`Cmd + Shift + P` for Mac, or `Ctrl + Shift + P` for Windows).
 4. Select the folder containing the cloned repository.
@@ -37,7 +31,9 @@ Opening a terminal will give you console access to the container environment. Fr
 ---
 
 ### Interactive Development
-The toolchain container can also be launched and used *interactively* as follows, without the need for VS Code:
+The toolchain container can also be launched and used *interactively* as follows, without the need for VS Code.
+1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+2. Run the following commands from within the newly cloned `getting-started` repo.
 ```
 cd samples
 docker run --rm -it -v $(pwd):/home/atym ghcr.io/atym-io/atym-c-toolchain:latest
@@ -67,11 +63,3 @@ You should now see a new `.atym` directory in your home directory (`~/.atym`) th
 Now that you've built your first Atym container, it's time to deploy it to your device! 
 
 Visit our [Quickstart Guide](https://docs.atym.io/quickstart) to learn how to set up the Atym Runtime on your board, register your device with the Atym Hub, and deploy your first containerized application. 
-
-## Important links
-Explore these sections in our docs to get more familiar with developing Atym containers.
-- [Container Specification](https://docs.atym.io/architecture/containers/overview) - Understand the Atym container format
-- [Container APIs](https://docs.atym.io/reference/api) - Discover available container APIs
-- [CLI Reference](https://docs.atym.io/reference/cli) - Master the Atym CLI capabilities
-
-Or, visit our [documentation](https://docs.atym.io) home for comprehensive guides and reference materials.
