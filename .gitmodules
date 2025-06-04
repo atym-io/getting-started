@@ -1,0 +1,3 @@
+[submodule "atym-sdk"]
+	path = atym-sdk
+	url = git@github.com:atym-io/atym-sdk.git
