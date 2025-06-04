@@ -13,6 +13,13 @@ int ocre_sensors_open(ocre_sensor_handle_t handle);
 int ocre_sensors_get_handle(int sensor_id);
 int ocre_sensors_get_channel_count(int sensor_id);
 int ocre_sensors_get_channel_type(int sensor_id, int channel_index);
+int ocre_sensors_read(int sensor_id, int channel_type);
+int ocre_sensors_open_by_name(const char *sensor_name);
+int ocre_sensors_read_by_name(const char *sensor_name, int channel_type);
+int ocre_sensors_get_channel_type_by_name(const char *sensor_name, int channel_index);
+int ocre_sensors_get_channel_count_by_name(const char *sensor_name);
+int ocre_sensors_get_name(int sensor_id, char *buffer, int buffer_size);
+int ocre_sensors_get_list(char **name_list, int max_names);
 
 int ocre_timer_create(int id);
 int ocre_timer_delete(int id);

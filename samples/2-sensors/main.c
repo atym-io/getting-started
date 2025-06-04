@@ -22,55 +22,90 @@ int main()
          ██ ██      ██  ██ ██      ██ ██    ██ ██   ██      ██ \n\
     ███████ ███████ ██   ████ ███████  ██████  ██   ██ ███████ \n");
   printf("Sensors Test\n");
-  /*===========================================================================================*/
-  fflush(stdout);
+
+  // Initialize the sensor API
   int ret = ocre_sensors_init();
-  if (ret)
+  if (ret != 0)
   {
-    printf("Sensors not initialized\n");
+    printf("Error: Sensors not initialized (code: %d)\n", ret);
+    return -1;
   }
+  printf("Sensors initialized successfully\n");
 
+  // Discover available sensors
   int nr_of_sensors = ocre_sensors_discover();
-  printf("Sensors found:%d\n", nr_of_sensors);
-
-  int channel_count = 0;
-  int channel_type[5] = {0};
-
-  for (int i = 0; i < nr_of_sensors; i++)
+  printf("Sensors found: %d\n", nr_of_sensors);
+  if (nr_of_sensors <= 0)
   {
-    int handle = ocre_sensors_get_handle(i);
-    if (handle == -1)
+    printf("Error: No sensors discovered\n");
+    return -1;
+  }
+
+  printf("\n=== Testing String-Based API ===\n");
+
+  // Test accessing sensors by name
+  ocre_sensor_handle_t rng_handle;
+  printf("Trying to open 'RNG Sensor'...\n");
+  if (ocre_sensors_open_by_name("RNG Sensor") != 0)
+  {
+    printf("Could not open 'RNG Sensor'\n");
+  }
+  else
+  {
+    printf("Successfully opened 'RNG Sensor', handle: %d\n", rng_handle);
+
+    // Get channel count
+    int channel_count = ocre_sensors_get_channel_count_by_name("RNG Sensor");
+    printf("'RNG Sensor' has %d channels\n", channel_count);
+
+    // Get first channel type
+    int channel_type = -1;
+    if (channel_count > 0)
     {
-      printf("Sensor NOK\n");
+      channel_type = ocre_sensors_get_channel_type_by_name("RNG Sensor", 0);
+      printf("'RNG Sensor' first channel type: %d\n", channel_type);
     }
-    else
+
+    // Read sensor data
+    if (channel_type >= 0)
     {
-      int ret = ocre_sensors_open(handle);
-      if (!ret)
+      int value = ocre_sensors_read_by_name("RNG Sensor", channel_type);
+      printf("Read 'RNG Sensor' value = %d\n", value);
+    }
+  }
+
+  // Try another sensor
+  ocre_sensor_handle_t accel_handle;
+  printf("\nTrying to open 'imu'...\n");
+  if (ocre_sensors_open_by_name("imu") != 0)
+  {
+    printf("Could not open 'imu'\n");
+  }
+  else
+  {
+    printf("Successfully opened 'imu', handle: %d\n", accel_handle);
+
+    // Get channel count
+    int channel_count = ocre_sensors_get_channel_count_by_name("imu");
+    printf("'imu' has %d channels\n", channel_count);
+
+    // Try to read from each channel
+    for (int j = 0; j < channel_count; j++)
+    {
+      int channel_type = ocre_sensors_get_channel_type_by_name("imu", j);
+      if (channel_type >= 0)
       {
-        printf("Opened sensor with id: %d, with handle: %d\n", i, ret);
-        int channel_count = ocre_sensors_get_channel_count(i);
-        for (int j = 0; j < channel_count; j++)
-        {
-          channel_type[j] = ocre_sensors_get_channel_type(i, j);
-          if (channel_type[j] == -1)
-          {
-            printf("Sensor channel type NOK\n");
-          }
-          else
-          {
-            int value_read = ocre_sensors_read(i, channel_type[j]);
-            printf("Read value: %d, form sensor with id: %d, with handle: %d\n", value_read, i, ret);
-          }
-        }
-      }
-      else
-      {
-        printf("Could not open sensor with id: %d, with handle: %d\n", i, ret);
+        int value = ocre_sensors_read_by_name("imu", channel_type);
+        printf("Channel %d (type %d) value = %d\n", j, channel_type, value);
       }
     }
   }
-  // Wait for exit
+
+  printf("\n=== Testing Handle-Based API ===\n");
+
+  printf("Sensor tests completed.\n");
+
+  // Wait for exit (using your existing pause function)
   ocre_pause();
 
   printf("Sensors exiting.\n");

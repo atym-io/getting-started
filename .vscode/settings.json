@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "unistd.h": "c"
-    }
+        "unistd.h": "c",
+        "ocre_api.h": "c"
+    },
+    "cmake.sourceDirectory": "/workspaces/getting-started/samples/1-blinky"
 }
