@@ -5,7 +5,7 @@
 // This example demonstrates a simple blinky application using the Atym GPIO and timer APIs.
 #include <stdio.h>
 #include <stdbool.h>
-#include "ocre_api.h"
+#include "../../atym-sdk/ocre_api.h"
 
 // Define the timer ID and interval for the periodic timer
 #define TIMER_ID        1
