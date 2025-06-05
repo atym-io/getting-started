@@ -9,7 +9,7 @@ binaries:
 
 config:
   environment:
-    - INTERVAL=500
   permissions:
-    - console
-    - LED
+    - networking
+    - ocre_gpio
+    - ocre_timers

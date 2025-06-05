@@ -11,4 +11,4 @@ config:
   environment:
     - Message
   permissions:
-    - console
+    - networking
