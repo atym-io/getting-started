@@ -9,6 +9,4 @@ binaries:
 
 config:
   environment:
-    - Message
   permissions:
-    - networking

@@ -10,6 +10,5 @@ binaries:
 config:
   environment:
   permissions:
-    - networking
     - ocre_gpio
     - ocre_timers
