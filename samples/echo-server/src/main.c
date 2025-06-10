@@ -73,7 +73,7 @@ int main(void)
     printf("**********************************************\n");
     printf("To connect:\n");
     printf("1. Find this device's IP: net iface\n");
-    printf("2. Telnet to the device: telnet <IP>:8000\n");
+    printf("2. Telnet to the device: telnet <IP> 8000\n");
     printf("3. Type messages to test the echo server!\n");
     printf("**********************************************\n");
     fflush(stdout);
