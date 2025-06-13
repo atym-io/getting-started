@@ -15,6 +15,12 @@ git submodule update --init --recursive
 
 **Why submodules?** This repository includes the [ATYM SDK](https://github.com/atym-io/atym-sdk) as a submodule, which provides the C API definitions (like GPIO, sensors, timers, and messaging) needed to build Atym applications. The `--recursive` flag ensures you get both this repository and the SDK headers.
 
+## Using the SDK in Samples
+Sample applications can include the ATYM SDK headers:
+```c
+#include "atym-sdk/ocre_api.h"
+```
+
 ---
 
 ### Development with Visual Studio Code
