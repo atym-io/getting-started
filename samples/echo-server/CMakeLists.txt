@@ -17,6 +17,8 @@ add_link_options(
     -Wl,--strip-all # Strip all symbol/debug information from the binary
 )
 add_executable(${APPNAME}.wasm main.c)
+
+# Add socket support for WASM from IWASM
 target_include_directories(${APPNAME}.wasm PRIVATE
     ../../external/wasm-micro-runtime/core/iwasm/libraries/lib-socket
 )
