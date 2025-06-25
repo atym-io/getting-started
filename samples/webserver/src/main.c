@@ -1,7 +1,10 @@
-#include "mongoose.h"
 #include <stdio.h>
-#define SERVER_ADDR "http://0.0.0.0:8000"
-static const char *s_http_addr = SERVER_ADDR;
+#include "mongoose.h"
+
+#define HTTP_PORT "8000"
+
+static char s_http_addr[32];
+
 static void fn(struct mg_connection *c, int ev, void *ev_data) {
   if (ev == MG_EV_HTTP_MSG) {
     struct mg_http_message *hm = (struct mg_http_message *) ev_data;
@@ -31,25 +34,21 @@ static void fn(struct mg_connection *c, int ev, void *ev_data) {
   }
 }
 int main(void) {
+  snprintf(s_http_addr, sizeof(s_http_addr), "http://0.0.0.0:%s", HTTP_PORT);
   mg_log_set(MG_LL_ERROR);                    // Set log level
   setvbuf(stdout, NULL, _IONBF, 0);           // Disable stdout buffering
-  
-  // Display startup banner
-  printf("\n**********************************************\n");
-  printf("Web server starting...\n");
-  printf("Web server listening on %s\n", s_http_addr);
-  printf("**********************************************\n");
-  printf("To connect:\n");
-  printf("1. Find this device's IP: net iface\n");
-  printf("2. Open your web browser\n");
-  printf("3. Navigate to: http://<IP>:8000\n");
-  printf("**********************************************\n");
-  fflush(stdout);
-  
   struct mg_mgr mgr;                          // Event manager
   mg_mgr_init(&mgr);                          // Initialize event manager
-  mg_http_listen(&mgr, s_http_addr, fn, NULL); // Create HTTP listener
-  printf("Server running at %s\n", s_http_addr);
+  mg_http_listen(&mgr, s_http_addr, fn, NULL);// Create HTTP listener
+  printf("\n**********************************************\n");
+  printf("Web server listening on port: %s\n", HTTP_PORT);
+  printf("**********************************************\n");
+  printf("To connect:\n");
+  printf("1. Find this device's IP using: net iface\n");
+  printf("2. Open your web browser\n");
+  printf("3. Navigate to: http://<IP>:%s\n", HTTP_PORT);
+  printf("**********************************************\n");
+  fflush(stdout);
   for (;;) mg_mgr_poll(&mgr, 1000);           // Infinite event loop
   
   mg_mgr_free(&mgr);

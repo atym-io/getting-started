@@ -21,7 +21,7 @@ add_compile_options(
     -Wno-unused-parameter
 )
 
-# Collect the mongoose source files
+# Collect the source files
 file(GLOB source_files ./src/mongoose.c ./src/wasi_socket_ext.c)
 
 # Add socket support for WASM from IWASM 
