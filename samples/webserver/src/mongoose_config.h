@@ -52,6 +52,7 @@ extern "C" {
 #include <stdlib.h>
 #include <string.h>
 #include "wasi_socket_ext.h"
+#include "inet_addr_shim.h"
 
 #define MG_ENABLE_POLL 1
 

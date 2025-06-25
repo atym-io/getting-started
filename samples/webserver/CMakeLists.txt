@@ -31,7 +31,7 @@ add_link_options(
 file(GLOB mongoose ./src/mongoose.c)
 
 # Add the executable target for the web server
-add_executable(${APPNAME}.wasm src/main.c ${mongoose})
+add_executable(${APPNAME}.wasm src/main.c ${mongoose} src/inet_addr_shim.c)
 
 # Add socket support for WASM from IWASM
 target_include_directories(${APPNAME}.wasm PRIVATE
