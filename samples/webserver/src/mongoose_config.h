@@ -51,6 +51,7 @@ extern "C" {
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "wasi_socket_ext.h"
 
 #define MG_ENABLE_POLL 1
 
@@ -62,7 +63,6 @@ extern "C" {
 #include <sys/select.h>
 #endif
 
-#include "wasi_socket_ext.h"
 #include <sys/stat.h>
 #include <sys/time.h>
 #include <sys/types.h>
