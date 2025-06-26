@@ -33,13 +33,16 @@ static void fn(struct mg_connection *c, int ev, void *ev_data) {
     mg_ws_send(c, wm->data.buf, wm->data.len, WEBSOCKET_OP_TEXT);
   }
 }
+
 int main(void) {
   snprintf(s_http_addr, sizeof(s_http_addr), "http://0.0.0.0:%s", HTTP_PORT);
-  mg_log_set(MG_LL_ERROR);                    // Set log level
-  setvbuf(stdout, NULL, _IONBF, 0);           // Disable stdout buffering
-  struct mg_mgr mgr;                          // Event manager
-  mg_mgr_init(&mgr);                          // Initialize event manager
-  mg_http_listen(&mgr, s_http_addr, fn, NULL);// Create HTTP listener
+
+  mg_log_set(MG_LL_ERROR);                     // Set log level
+  setvbuf(stdout, NULL, _IONBF, 0);            // Disable stdout buffering
+  struct mg_mgr mgr;                           // Event manager
+  mg_mgr_init(&mgr);                           // Initialize event manager
+  mg_http_listen(&mgr, s_http_addr, fn, NULL); // Create HTTP listener
+
   printf("\n**********************************************\n");
   printf("Web server listening on port: %s\n", HTTP_PORT);
   printf("**********************************************\n");
@@ -49,8 +52,8 @@ int main(void) {
   printf("3. Navigate to: http://<IP>:%s\n", HTTP_PORT);
   printf("**********************************************\n");
   fflush(stdout);
+
   for (;;) mg_mgr_poll(&mgr, 1000);           // Infinite event loop
-  
   mg_mgr_free(&mgr);
   return 0;
 }
