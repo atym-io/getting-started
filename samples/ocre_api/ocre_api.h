@@ -17,6 +17,9 @@ extern "C"
 {
 #endif
 
+// For exported callback functions (optional - only needed for WASM callbacks)
+#define OCRE_EXPORT(name) __attribute__((export_name(name)))
+
 // OCRE SDK Version Information
 #define OCRE_SDK_VERSION_MAJOR 1
 #define OCRE_SDK_VERSION_MINOR 0
@@ -108,12 +111,14 @@ extern "C"
     typedef void (*message_callback_func_t)(const char *topic, const char *content_type, const void *payload, uint32_t payload_len);
 
     int ocre_get_event(uint32_t type_offset, uint32_t id_offset, uint32_t port_offset,
-                       uint32_t state_offset, uint32_t topic_offset, uint32_t content_type_offset,
-                       uint32_t payload_offset, uint32_t payload_len_offset);
+                       uint32_t state_offset, uint32_t extra_offset, uint32_t payload_len_offset);
     void ocre_poll_events(void);
     int ocre_register_timer_callback(int timer_id, timer_callback_func_t callback);
     int ocre_register_gpio_callback(int pin, int port, gpio_callback_func_t callback);
     int ocre_register_message_callback(const char *topic, message_callback_func_t callback);
+    int ocre_unregister_timer_callback(int timer_id);
+    int ocre_unregister_gpio_callback(int pin, int port);
+    int ocre_unregister_message_callback(const char *topic);
 
     // Messaging API
     int ocre_msg_system_init(void);
@@ -149,7 +154,6 @@ extern "C"
         char domainname[OCRE_API_POSIX_BUF_SIZE];
     };
     int uname(struct _ocre_posix_utsname *name);
-
 #ifdef __cplusplus
 }
 #endif

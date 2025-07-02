@@ -1,7 +1,7 @@
 # Copyright (C) 2024 Atym Incorporated. All rights reserved.
 # Atym container image definition
 
-version: '1'
+version: '0'
 
 name: hello-world 
 binaries:

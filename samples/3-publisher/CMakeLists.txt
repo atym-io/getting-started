@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20.0)
-set(APPNAME blinky)   
+set(APPNAME publisher)   
 
 project(${APPNAME})
 
@@ -11,6 +11,6 @@ add_link_options(
     -Wl,--strip-all # Strip all symbol/debug information from the binary
 )
 
-add_executable(${APPNAME}.wasm main.c ocre_api.c)
+add_executable(${APPNAME}.wasm main.c ../ocre_api/ocre_api.c)
 
 target_link_libraries(${APPNAME}.wasm ${LIBAPP_FRAMEWORK})
