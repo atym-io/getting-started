@@ -68,4 +68,4 @@ You should now see a new `.atym` directory in your home directory (`~/.atym`) th
 ## What's Next?
 Now that you've built your first Atym container, it's time to deploy it to your device! 
 
-Visit our [Quickstart Guide](https://docs.atym.io/quickstart) to learn how to set up the Atym Runtime on your board, register your device with the Atym Hub, and deploy your first containerized application. 
+Visit our [Quickstart Guide](https://docs.prod.atym.io/quickstart) to learn how to set up the Atym Runtime on your board, register your device with the Atym Hub, and deploy your first containerized application. 
