@@ -1,3 +1,14 @@
+> [!NOTE]
+> ## 👋 Welcome! This repository has moved
+> 
+> Thanks for your interest in Atym! We've consolidated our resources into a new home to make your development experience even better.
+>
+> 👉 **Head over to the [Atym Toolchain](https://github.com/atym-io/atym-toolchain) repository** for the latest samples, SDK, and development tools.
+>
+> See you there!
+---------------------
+
+
 Getting Started with Atym
 ==========================
 This repository contains materials and sample code for building applications with the Atym Platform, including the Atym toolchain for C/C++ via a **[dev container](https://code.visualstudio.com/docs/remote/containers-tutorial)**, which can also be run in VSCode or interactively.
